@@ -8,9 +8,7 @@ features = st.container()
 modelTraining = st.container()
 
 
-st.cache
-
-
+@st.cache
 def get_data(filename):
 
     song_data = pd.read_csv(filename)
@@ -21,7 +19,9 @@ def get_data(filename):
 with header:
     st.title('Dobrodosli u projekt')
 
-song_data = get_data('data/song_data.csv')
+with dataset:
+    song_data = get_data('data/song_data.csv')
+    st.write(song_data.head())
 
 with modelTraining:
     st.header('Time to train the model')
