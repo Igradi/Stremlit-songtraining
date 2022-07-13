@@ -35,8 +35,8 @@ with modelTraining:
     st.text('Choose parameterers')
     duration = modelTraining.slider('Trajanje u ms', min_value=1,
                                     max_value=1800000, value=1)
-    acousticness = modelTraining.slider(
-        'Akusticnost', min_value=0, max_value=1, value=0)
+    acousticness = st.number_input(
+        'Akusticnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
     danceability = modelTraining.slider(
         'Plesnost', min_value=10, max_value=20, value=15)
     energy = modelTraining.slider(
@@ -58,9 +58,9 @@ with modelTraining:
     audio_valence = modelTraining.slider('Audio valencija', min_value=10,
                                          max_value=20, value=15)
 
-    num = st.number_input(
-        "Higher precision step",
-        min_value=1.0,
-        max_value=5.0,
-        step=1e-6,
-        format="%.5f")
+    # num = st.number_input(
+    #     "Higher precision step",
+    #     min_value=1.0,
+    #     max_value=5.0,
+    #     step=1e-6,
+    #     format="%.5f")
