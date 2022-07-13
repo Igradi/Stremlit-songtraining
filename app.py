@@ -40,40 +40,34 @@ with modelTraining:
     acousticness = st.number_input(
         'Akusticnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
-    danceability = modelTraining.slider(
-        'Plesnost', min_value=10, max_value=20, value=15)
+    danceability = st.number_input(
+        'Plesnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
-    energy = modelTraining.slider(
-        'Energicnost', min_value=10, max_value=20, value=15)
+    energy = st.number_input(
+        'Energicnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
-    instrumentalness = modelTraining.slider(
-        'Instrumentalnost', min_value=10, max_value=20, value=15)
+    instrumentalness = st.number_input(
+        'Instrumentalnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
-    key = modelTraining.slider('Kljuc', min_value=10, max_value=20, value=15)
+    key = st.slider('Kljuc', min_value=0, max_value=11, value=5)
 
-    liveness = modelTraining.slider(
-        'Zivost', min_value=10, max_value=20, value=15)
+    liveness = st.number_input(
+        'Zivost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
-    loudness = modelTraining.slider(
-        'Glasnoca', min_value=10, max_value=20, value=15)
+    loudness = st.number_input(
+        'Glasnoca', min_value=-39.0, max_value=1.6, step=1e-2, format="%.3f")
 
-    audio_mode = modelTraining.slider(
-        'Audio mode', min_value=10, max_value=20, value=15)
+    audio_mode = st.slider(
+        'Audio mode', min_value=0, max_value=1, value=0)
 
-    speechiness = modelTraining.slider(
-        'Govornost', min_value=10, max_value=20, value=15)
+    speechiness = st.number_input(
+        'Govornost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
-    tempo = modelTraining.slider('Tempo', min_value=10, max_value=20, value=15)
+    tempo = st.number_input('Tempo', min_value=0.0,
+                            max_value=245.0, step=1e-2, format="%.3f")
 
-    time_signature = modelTraining.slider(
-        'Vremenski potpis', min_value=10, max_value=20, value=15)
+    time_signature = st.slider(
+        'Vremenski potpis', min_value=0, max_value=5, value=2)
 
-    audio_valence = modelTraining.slider(
-        'Audio valencija', min_value=10, max_value=20, value=15)
-
-    # num = st.number_input(
-    #     "Higher precision step",
-    #     min_value=1.0,
-    #     max_value=5.0,
-    #     step=1e-6,
-    #     format="%.5f")
+    audio_valence = st.number_input(
+        'Audio valencija', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
