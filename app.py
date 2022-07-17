@@ -6,6 +6,8 @@ import streamlit as st
 import sklearn
 import pickle
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 from sklearn.neighbors import NearestNeighbors
 st.set_page_config(page_title="Song Recommendation", layout="wide")
 
@@ -29,6 +31,8 @@ with header:
 with dataset:
     song_data = get_data('data/song_data.csv')
     st.write(song_data.describe())
+    sns.heatmap(song_data.corr(), cmap="YlGnBu")
+    st.pyplot()
 
 with modelTraining:
     st.header('Time to train the model')
