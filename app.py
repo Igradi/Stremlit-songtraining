@@ -10,6 +10,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 st.set_page_config(page_title="Song Recommendation", layout="wide")
+model = pickle.load(open('model.sav', 'rb'))
 
 header = st.container()
 dataset = st.container()
@@ -33,11 +34,14 @@ with dataset:
     st.write(song_data.describe())
     sns.heatmap(song_data.corr(), cmap="YlGnBu")
     st.pyplot()
+    st.set_option('deprecation.showPyplotGlobalUse', False)
 
 with modelTraining:
     st.header('Time to train the model')
     st.text('Choose parameterers')
 
+
+def user_report():
     duration = st.number_input(
         'Trajanje u ms', min_value=0.0, max_value=1800000.0, step=100.0)
 
@@ -75,3 +79,28 @@ with modelTraining:
 
     audio_valence = st.number_input(
         'Audio valencija', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
+
+    user_report_data = {
+        'duration': duration,
+        'acousticness': acousticness,
+        'danceability': danceability,
+        'energy': energy,
+        'instrumentalness': instrumentalness,
+        'key': key,
+        'liveness': liveness,
+        'loudness': loudness,
+        'audio_mode': audio_mode,
+        'speechiness': speechiness,
+        'tempo': tempo,
+        'time_signature': time_signature,
+        'audio_valence': audio_valence,
+    }
+    report_data = pd.DataFrame(user_report_data, index=[0])
+    return report_data
+
+
+user_data = user_report()
+st.write(user_data)
+
+popularity = model.predict(user_data)
+st.write(popularity)
