@@ -6,7 +6,6 @@ import streamlit as st
 import sklearn
 import pickle
 import numpy as np
-import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 st.set_page_config(page_title="Song Recommendation", layout="wide")
@@ -16,6 +15,7 @@ header = st.container()
 dataset = st.container()
 features = st.container()
 modelTraining = st.container()
+output = st.container()
 
 
 @st.cache
@@ -28,17 +28,15 @@ def get_data(filename):
 
 with header:
     st.title('Dobrodosli u projekt')
+    st.image('songs.jpg')
 
 with dataset:
     song_data = get_data('data/song_data.csv')
-    st.write(song_data.describe())
-    sns.heatmap(song_data.corr(), cmap="YlGnBu")
-    st.pyplot()
     st.set_option('deprecation.showPyplotGlobalUse', False)
 
 with modelTraining:
-    st.header('Time to train the model')
-    st.text('Choose parameterers')
+    st.header('Odaberite parametre pomocu slidera te formi')
+    st.text('Izaberite sve parametre kako bi predvidili popularnost svoje pjesme')
 
 
 def user_report():
@@ -99,8 +97,11 @@ def user_report():
     return report_data
 
 
-user_data = user_report()
-st.write(user_data)
+with output:
+    user_data = user_report()
+    st.write('Parametri koje si odabrao su: ')
+    st.write(user_data)
 
-popularity = model.predict(user_data)
-st.write(popularity)
+    popularity = model.predict(user_data)
+    st.subheader('Predvidena popularnost tvoje pjesme je: '+str(
+        np.round(popularity[0], 2)))
