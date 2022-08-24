@@ -35,8 +35,8 @@ with dataset:
     st.set_option('deprecation.showPyplotGlobalUse', False)
 
 with modelTraining:
-    st.header('Odaberite parametre pomocu slidera te formi')
-    st.text('Izaberite sve parametre kako bi predvidili popularnost svoje pjesme')
+    st.header('Izaberite sve parametre kako bi predvidili popularnost svoje pjesme')
+    st.text('Odaberite parametre pomocu slidera te formi')
 
 
 def user_report():
