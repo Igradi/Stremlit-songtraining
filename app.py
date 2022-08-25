@@ -27,7 +27,7 @@ def get_data(filename):
 
 
 with header:
-    st.title('Dobrodosli u projekt')
+    st.title('Dobrodošli u projekt')
     st.image('songs.jpg')
 
 with dataset:
@@ -35,8 +35,9 @@ with dataset:
     st.set_option('deprecation.showPyplotGlobalUse', False)
 
 with modelTraining:
-    st.header('Izaberite sve parametre kako bi predvidili popularnost svoje pjesme')
-    st.text('Odaberite parametre pomocu slidera te formi')
+    st.header(
+        'Izaberite sve parametre kako biste predvidili popularnost svoje pjesme')
+    st.text('Odaberite parametre pomoću slidera i formi')
 
 
 def user_report():
@@ -44,13 +45,13 @@ def user_report():
         'Trajanje u ms', min_value=0.0, max_value=1800000.0, step=100.0)
 
     acousticness = st.number_input(
-        'Akusticnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
+        'Akustičnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
     danceability = st.number_input(
         'Plesnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
     energy = st.number_input(
-        'Energicnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
+        'Energičnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
     instrumentalness = st.number_input(
         'Instrumentalnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
@@ -58,10 +59,10 @@ def user_report():
     key = st.slider('Kljuc', min_value=0, max_value=11, value=5)
 
     liveness = st.number_input(
-        'Zivost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
+        'Živost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
     loudness = st.number_input(
-        'Glasnoca', min_value=-39.0, max_value=1.6, step=1e-2, format="%.3f")
+        'Glasnoća', min_value=-39.0, max_value=1.6, step=1e-2, format="%.3f")
 
     audio_mode = st.slider(
         'Audio mode', min_value=0, max_value=1, value=0)
@@ -99,9 +100,9 @@ def user_report():
 
 with output:
     user_data = user_report()
-    st.write('Parametri koje si odabrao su: ')
+    st.write('Parametri ste odabrali su: ')
     st.write(user_data)
 
     popularity = model.predict(user_data)
-    st.subheader('Predvidena popularnost tvoje pjesme je: '+str(
+    st.subheader('Predviđena popularnost Vaše pjesme je: '+str(
         np.round(popularity[0], 2)))
