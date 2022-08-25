@@ -36,7 +36,7 @@ with dataset:
 
 with modelTraining:
     st.header(
-        'Izaberite sve parametre kako biste predvidili popularnost svoje pjesme')
+        'Izaberite sve parametre kako biste predvidjeli popularnost svoje pjesme')
     st.text('Odaberite parametre pomoću slidera i formi')
 
 
@@ -56,7 +56,7 @@ def user_report():
     instrumentalness = st.number_input(
         'Instrumentalnost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
 
-    key = st.slider('Kljuc', min_value=0, max_value=11, value=5)
+    key = st.slider('Ključ', min_value=0, max_value=11, value=5)
 
     liveness = st.number_input(
         'Živost', min_value=0.0, max_value=1.0, step=1e-5, format="%.5f")
@@ -100,7 +100,7 @@ def user_report():
 
 with output:
     user_data = user_report()
-    st.write('Parametri ste odabrali su: ')
+    st.write('Parametri koje ste odabrali su: ')
     st.write(user_data)
 
     popularity = model.predict(user_data)
