@@ -26,7 +26,7 @@ def get_data(filename):
 
 with header:
     st.title('Dobrodošli u projekt')
-    st.image('songs.jpg', width=600)
+    st.image('./images/songs.jpg', width=600)
 
 with dataset:
     song_data = get_data('data/song_data.csv')
@@ -105,8 +105,8 @@ with output:
     st.subheader('Predviđena popularnost Vaše pjesme je: '+str(
         np.round(popularity[0], 2)))
     if(popularity < 45):
-        st.image('bad.png', width=200)
+        st.image('./images/bad.png', width=200)
     elif(popularity > 45 and popularity < 60):
-        st.image('inTheMiddle.jpg', width=200)
+        st.image('./images/inTheMiddle.jpg', width=200)
     else:
-        st.image('good.jpg', width=200)
+        st.image('./images/good.jpg', width=200)
