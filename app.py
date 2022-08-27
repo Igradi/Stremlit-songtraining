@@ -25,7 +25,7 @@ def get_data(filename):
 
 
 with header:
-    st.title('Dobrodošli u projekt')
+    st.title('Dobrodošli u projekt "predviđanje popularnosti Vaše pjesme"')
     st.image('./images/songs.jpg', width=600)
 
 with dataset:
