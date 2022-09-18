@@ -1,12 +1,8 @@
-import plotly.express as px
-import streamlit.components.v1 as components
 import pandas as pd
 from requests import head
 import streamlit as st
 import pickle
 import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
 st.set_page_config(page_title="Song Recommendation", layout="wide")
 model = pickle.load(open('model.sav', 'rb'))
 
@@ -25,7 +21,7 @@ def get_data(filename):
 
 
 with header:
-    st.title('Dobrodošli u projekt "predviđanje popularnosti Vaše pjesme"')
+    st.title('Dobrodošli u projekt "Predviđanje popularnosti Vaše pjesme"')
     st.image('./images/songs.png')
 
 with dataset:
